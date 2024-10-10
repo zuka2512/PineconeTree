@@ -1,14 +1,13 @@
 import axios from 'axios';
 
-// Postavi bazni URL za sve API pozive
 const api = axios.create({
-  baseURL: 'http://localhost:3000', // Ovdje dodaj točan URL backend servera
+  baseURL: 'http://localhost:3000',
 });
 
 // Tipovi za čvorove
 export type Node = {
   id: number;
-  parentId: number | null;
+  parentId: number;
   title: string;
   ordering: number;
 };
@@ -20,14 +19,14 @@ export const fetchTree = async (parentId?: number) => {
 };
 
 // Dodavanje novog čvora
-export const addNode = async (parentId: number, name: string) => {
-  const response = await api.post<Node>('/node', { parentId: parentId, title: name });
+export const addNode = async (newParentId: number, newTitle: string) => {
+  const response = await api.post<Node>('/node', { parentId: newParentId, title: newTitle });
   return response.data;
 };
 
 // Ažuriranje čvora
-export const updateNode = async (id: number, name: string) => {
-  const response = await api.put(`/node/${id}`, { name });
+export const updateNode = async (id: number, title: string) => {
+  const response = await api.put(`/node/${id}`, { title });
   return response.data;
 };
 
