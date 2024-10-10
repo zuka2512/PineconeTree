@@ -1,0 +1,7 @@
+.tree-container {
+    max-width: 33%;
+    overflow: auto;    
+    margin: 0 auto;      
+    display: flex;       
+  }
+  
